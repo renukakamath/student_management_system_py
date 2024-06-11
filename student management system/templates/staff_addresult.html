@@ -1,0 +1,49 @@
+{% include 'staffheader.html'%}
+<div class="carousel-item-a intro-item bg-image" style="background-image: url(/static/img/slide-21.jpg)">
+        <div class="overlay overlay-a"></div>
+        <div class="intro-content display-table">
+          <div class="table-cell">
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-8">
+                  <div class="intro-body">
+<center>
+	<h1 style="color: white">Add result</h1>
+	<form method="post">
+	<table class="table" style="width: 500px;color: white">
+		<tr>
+			<th>Subject</th>
+			<td><select name="sub"  class="form-control" required="">
+				<option>Select</option>
+				{% for row in data['subject']%}
+				<option value="{{row['subject_id']}}">{{row['subject']}}</option>
+				{% endfor %}
+			</select></td>
+		</tr>
+		<tr>
+			<td align="center" colspan="2"><input type="submit"  class="btn btn-success" name="result"></td>
+		</tr>
+	</table>
+</form>
+</center>
+</div></div></div></div></div></div></div>
+<center>
+	<h1>View Result</h1>
+	
+		<table class="table" style="width: 500px">
+			<tr>
+				<th>Slno</th>
+				<th>Subject</th>
+				<th>Student</th>
+			</tr>
+			{%for row in data['result']%}
+			<tr>
+				<td>{{loop.index}}</td>
+				<td>{{row['subject']}}</td>
+				<td>{{row['fname']}}</td>
+			</tr>
+			{% endfor %}
+		</table>
+	
+</center>
+{% include 'footer.html'%}

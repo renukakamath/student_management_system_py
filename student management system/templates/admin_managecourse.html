@@ -1,0 +1,64 @@
+{% include 'adminheader.html' %}
+  <div class="carousel-item-a intro-item bg-image" style="background-image: url(/static/img/slide-21.jpg);height: 600px">
+        <div class="overlay overlay-a"  style="height: 600px"></div>
+        <div class="intro-content display-table">
+          <div class="table-cell">
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-8">
+                  <div class="intro-body">
+                     
+<center>
+	<h1 style="color: white">Manage Course</h1>
+	<form method="post">
+		{% if data['up']%}
+	<table class="table" style="width: 500px;color: white">
+		<tr>
+			<th>Course</th>
+			<td><input type="text" name="cou" class="form-control" required=""  value="{{data['up'][0]['course']}}"></td>
+		</tr>
+		<tr>
+			<td align="center" colspan="2"><input type="submit"   class="btn btn-success"  name="update"></td>
+		</tr>
+	</table>
+	{% else %}
+	<table class="table" style="width: 500px;color: white">
+		<tr>
+			<th>Course</th>
+			<td><input type="text"  class="form-control" required="" name="cou"></td>
+		</tr>
+		<tr>
+			<td align="center" colspan="2"><input type="submit" class="btn btn-success" name="course"></td>
+		</tr>
+	</table>
+	{% endif %}
+</form>
+</center>
+  
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+<center>
+	<h1>View Course</h1>
+	<table class="table" style="width: 500px"s>
+		<tr>
+			<th>Slno</th>
+			<th>Course</th>
+		</tr>
+		{% for row in data['view']%}
+		<tr>
+			<td>{{loop.index}}</td>
+			<td>{{row['course']}}</td>
+			<td><a  class="btn btn-success" href="?action=update&cid={{row['course_id']}}">Update</a></td>
+			<td><a  class="btn btn-success" href="?action=delete&cid={{row['course_id']}}">Delete</a></td>
+		</tr>
+		{% endfor %}
+	</table>
+</center>
+
+{% include 'footer.html'%}

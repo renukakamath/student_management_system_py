@@ -1,0 +1,78 @@
+{% include 'adminheader.html'%}
+<div class="carousel-item-a intro-item bg-image" style="background-image: url(/static/img/slide-21.jpg);height: 600px">
+        <div class="overlay overlay-a" style="height: 600px"></div>
+        <div class="intro-content display-table">
+          <div class="table-cell">
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-8">
+                  <div class="intro-body">
+<center>
+	<h1 style="color: white">Manage Subject</h1>
+	<form method="post">
+		{% if data['up']%}
+	<table class="table" style="width: 500px;color: white">
+		<tr>
+			<th>Course</th>
+			<td><select name="cou"  class="form-control" required="">
+              {% for row in data['up']%}
+              <option value="{{row['course_id']}}">{{data['up'][0]['course']}}</option>
+              {% endfor %}
+				<option>Select</option>
+				{% for row in data['op']%}
+				<option value="{{row['course_id']}}">{{row['course']}}</option>
+				{% endfor %}
+			</select></td>
+		</tr>
+		<tr>
+			<th>Subject</th>
+			<td><input type="text"  class="form-control" required="" name="sub" value="{{data['up'][0]['subject']}}"></td>
+		</tr>
+		<tr>
+			<td align="center" colspan="2"><input type="submit"  class="btn btn-success" name="update"></td>
+		</tr>
+	</table>
+  {% else %}
+	<table class="table" style="width: 500px;color: white">
+		<tr>
+			<th>Course</th>
+			<td><select name="cou"  class="form-control" required="">
+				<option>Select</option>
+				{% for row in data['op']%}
+				<option value="{{row['course_id']}}">{{row['course']}}</option>
+				{% endfor %}
+			</select></td>
+		</tr>
+		<tr>
+			<th>Subject</th>
+			<td><input type="text"  class="form-control" required="" name="sub"></td>
+		</tr>
+		<tr>
+			<td align="center" colspan="2"><input type="submit"  class="btn btn-success" name="subject"></td>
+		</tr>
+	</table>
+	{% endif %}
+	</form>
+</center>
+</div></div></div></div></div></div></div> 
+
+<center>
+	<table class="table" style="width: 500px">
+		<tr>
+			<th>Slno</th>
+			<th>Course</th>
+			<th>Subject</th>
+		</tr>
+         {% for row in data['view']%}
+		<tr>
+			<td>{{loop.index}}</td>
+			<td>{{row['course']}}</td>
+			<td>{{row['subject']}}</td>
+			<td><a  class="btn btn-success" href="?action=update&sid={{row['subject_id']}}">Update</a></td>
+			<td><a  class="btn btn-success"  href="?action=delete&sid={{row['subject_id']}}">Delete</a></td>
+		</tr>
+		{% endfor %}
+	</table>
+</center>
+
+{% include 'footer.html'%}

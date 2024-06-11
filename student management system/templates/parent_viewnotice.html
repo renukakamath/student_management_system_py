@@ -1,0 +1,28 @@
+{% include 'parentheader.html'%}
+<div class="carousel-item-a intro-item bg-image" style="background-image: url(/static/img/slide-21.jpg) ;height: 200px">
+        <div class="overlay overlay-a" style="height: 200px"></div>
+        <div class="intro-content display-table">
+          <div class="table-cell">
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-8">
+                  <div class="intro-body">
+                  	</div></div></div></div></div></div></div>
+<center>
+	<h1>View Notice</h1>
+	<table class="table" style="width: 500px">
+		<tr>
+			<th>Slno</th>
+			<th>Student</th>
+			<th>Notice</th>
+		</tr>
+		{% for row in data['not']%}
+		<tr>
+			<td>{{loop.index}}</td>
+			<td>{{row['fname']}}</td>
+			<td>{{row['notice']}}</td>
+		</tr>
+		{% endfor %}
+	</table>
+</center>
+{% include 'footer.html'%}

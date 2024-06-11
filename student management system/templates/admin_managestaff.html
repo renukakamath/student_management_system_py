@@ -1,0 +1,116 @@
+{% include 'adminheader.html' %}
+<div class="carousel-item-a intro-item bg-image" style="background-image: url(/static/img/slide-21.jpg); height: 850px">
+        <div class="overlay overlay-a" style="height: 850px"></div>
+        <div class="intro-content display-table">
+          <div class="table-cell">
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-8">
+                  <div class="intro-body">
+                  	<br><br><br>
+                  	
+<center>
+	<h1 style="color: white">Manage Staff</h1>
+	<form method="post">
+		{% if data['up']%}
+		<table class="table" style="width: 500px;color: white">
+			<tr>
+				<th>First Name</th>
+				<td><input type="text" name="fname"  class="form-control" required="" value="{{data['up'][0]['firstname']}}"></td>
+			</tr>
+			<tr>
+				<th>Last Name</th>
+				<td><input type="text" name="lname"  class="form-control" required="" value="{{data['up'][0]['lastname']}}"></td>
+			</tr>
+			<tr>
+				<th>Place</th>
+				<td><input type="text" name="place"  class="form-control" required="" value="{{data['up'][0]['place']}}"></td>
+			</tr>
+			<tr>
+				<th>Phone</th>
+				<td><input type="text" name="phone"  class="form-control" required="" pattern="[0-9]{10}" value="{{data['up'][0]['phone']}}"></td>
+			</tr>
+			<tr>
+				<th>Email</th>
+				<td><input type="email" name="email"  class="form-control" required="" value="{{data['up'][0]['email']}}"></td>
+			</tr>
+			<tr>
+				<th>Designation</th>
+				<td><input type="text" name="des"  class="form-control" required="" value="{{data['up'][0]['designation']}}"></td>
+			</tr>
+			
+			<tr>
+				<td align="center" colspan="2"><input type="submit"  class="btn btn-success" name="update"></td>
+			</tr>
+		</table>
+		{% else %}
+		<table class="table" style="width: 500px;color: white">
+			<tr>
+				<th>First Name</th>
+				<td><input type="text"  class="form-control" required="" name="fname"></td>
+			</tr>
+			<tr>
+				<th>Last Name</th>
+				<td><input type="text"  class="form-control" required="" name="lname"></td>
+			</tr>
+			<tr>
+				<th>Place</th>
+				<td><input type="text"  class="form-control" required="" name="place"></td>
+			</tr>
+			<tr>
+				<th>Phone</th>
+				<td><input type="text"  class="form-control" required="" pattern="[0-9]{10}"  name="phone"></td>
+			</tr>
+			<tr>
+				<th>Email</th>
+				<td><input type="email"  class="form-control" required="" name="email"></td>
+			</tr>
+			<tr>
+				<th>Designation</th>
+				<td><input type="text"  class="form-control" required="" name="des"></td>
+			</tr>
+			<tr>
+				<th>User Name</th>
+               <td><input type="text"  class="form-control" required="" name="uname"></td>               
+			</tr>
+			<tr>
+				<th>Password</th>
+				<td><input type="password"  class="form-control" required="" name="pwd"></td>
+			</tr>
+			<tr>
+				<td align="center" colspan="2"><input type="submit"  class="btn btn-success" name="staffreg"></td>
+			</tr>
+		</table>
+		{% endif %}
+	</form>
+</center>
+</div></div></div></div></div></div></div></div>
+
+<center>
+	<h1>View Staffs</h1>
+	<table class="table" style="width: 500px">
+		<tr>
+			<th>Slno</th>
+			<th>First name</th>
+			<th>Last Name</th>
+			<th>Place</th>
+			<th>phone</th>
+			<th>Email</th>
+			<th>Designation</th>
+		</tr>
+		{% for row in data['stf'] %}
+		<tr>
+			<td>{{loop.index}}</td>
+			<td>{{row['firstname']}}</td>
+			<td>{{row['lastname']}}</td>
+			<td>{{row['place']}}</td>
+			<td>{{row['phone']}}</td>
+			<td>{{row['email']}}</td>
+			<td>{{row['designation']}}</td>
+			<td><a  class="btn btn-success" href="?action=delete&sid={{row['staff_id']}}">Delete</a></td>
+			<td><a  class="btn btn-success" href="?action=update&sid={{row['staff_id']}}">Update</a></td>
+		</tr>
+		{% endfor %}
+	</table>
+</center>
+{% include 'footer.html' %}

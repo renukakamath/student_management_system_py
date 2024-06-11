@@ -1,0 +1,52 @@
+{% include 'parentheader.html'%}
+
+<div class="carousel-item-a intro-item bg-image" style="background-image: url(/static/img/slide-21.jpg); height: 650px">
+        <div class="overlay overlay-a" style="height: 650px"></div>
+        <div class="intro-content display-table">
+          <div class="table-cell">
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-8">
+                  <div class="intro-body">
+                  	<br><br><br>
+                  	
+<center>
+	<h1 style="color: white">Send Feedback</h1>
+	<form method="post">
+		<table class="table" style="width: 500px;color: white">
+			<tr>
+				<th>Feedback</th>
+				<td><input type="text"  class="form-control" required="" name="fee"></td>
+			</tr>
+			<tr>
+				<td align="center" colspan="2"> <input type="submit"  class="btn btn-success" name="feedback"></td>
+			</tr>
+		</table>
+	</form>
+</center>
+</div></div></div></div></div></div></div>
+<center>
+	<h1>View Feedback</h1>
+	<table class="table" style="width: 500px">
+		<tr>
+			<th>Slno</th>
+			<th>sender</th>
+			<th>Feedback</th>
+			
+			<th>Date</th>
+			<th>Reply</th>
+
+		</tr>
+		{% for row in data['feee']%}
+		<tr>
+			<td>{{loop.index}}</td>
+			<td>{{row['puname']}}</td>
+			<td>{{row['feedback']}}</td>
+			<td>{{row['date']}}</td>
+			<td>{{row['reply']}}</td>
+			
+		</tr>
+		{% endfor %}
+	</table>
+</center>
+{% include 'footer.html'%}
